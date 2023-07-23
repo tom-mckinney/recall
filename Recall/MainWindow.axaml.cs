@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -10,6 +11,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
+        this.DataContext = new MainWindowViewModel();
     }
 
     public void ButtonClicked(object source, RoutedEventArgs args)

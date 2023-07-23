@@ -2,10 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:recall="clr-namespace:Recall"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Recall.MainWindow"
+        x:DataType="recall:MainWindowViewModel"
         Title="Recall">
-
+    
     <StackPanel>
         <Border Margin="5"
                 CornerRadius="10"
@@ -23,8 +25,25 @@
             <TextBox Name="Celsius" Grid.Row="0" Grid.Column="1" Margin="0 5" Text="0" />
             <Label Grid.Row="1" Grid.Column="0" Margin="10">Fahrenheit</Label>
             <TextBox Name="Fahrenheit" Grid.Row="1" Grid.Column="1" Margin="0 5" Text="0" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="10">Duplicate</Label>
+            <TextBox Name="Duplicate" Grid.Row="2" Grid.Column="1" Margin="0 5" IsEnabled="False"
+                     Text="{Binding #Celsius.Text}" />
         </Grid>
-        <Button HorizontalAlignment="Center" Click="ButtonClicked" Grid.Row="2" Grid.Column="1" Margin="0 5">Calculate</Button>
+
+        <Grid ShowGridLines="True" Margin="5">
+            <TextBlock>Test</TextBlock>
+            <TextBlock>Other</TextBlock>
+        </Grid>
+        
+        <ItemsControl ItemsSource="{Binding TestData}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>Test</TextBlock>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Button HorizontalAlignment="Center" Click="ButtonClicked" Margin="0 5">Calculate</Button>
     </StackPanel>
 
 </Window>
